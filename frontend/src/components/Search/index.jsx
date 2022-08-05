@@ -39,10 +39,10 @@ export default function Search() {
         <Paper
           component="form"
           onSubmit={search}
-          sx={{ padding: "0.4em", marginBottom: "25vh", display: "flex", color: "#D2D2E6" }}
+          sx={{ padding: "0.4rem", marginBottom: "30vh", display: "flex", color: "#D2D2E6" }}
         >
           <InputBase
-            sx={{ marginLeft: "0.4em", marginRight: "0.4em", width: "100%" }}
+            sx={{ marginLeft: "0.4rem", marginRight: "0.4rem", width: "100%" }}
             placeholder="Example: https://www.twitch.tv/clintstevens/clip/TrustworthyRudeAyeayeTheRinger-tS_LDcvKFsx9Jt3x"
             inputProps={{ 'aria-label': 'example' }}
             onChange={handleInput}
@@ -53,7 +53,7 @@ export default function Search() {
         </Paper>
       </Box>
       <Box width="60%">
-        <Typography variant="h3" sx={{ marginTop: "-15vh" }}>
+        <Typography sx={{ marginTop: "-30vh", padding: "8%", color: "#9146FF", fontSize: { xl: 55, lg: 35, md: 30, sm: 20, xs: 10 } }}>
           {data}
         </Typography>
       </Box>

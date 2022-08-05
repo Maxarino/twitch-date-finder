@@ -15,7 +15,7 @@ export default function LandingPage() {
       textAlign="center"
     >
       <Box width="42%">
-        <Typography variant="h2" sx={{ padding: "2rem" }}>
+        <Typography sx={{ padding: "5%", fontSize: { xl: 55, lg: 35, md: 30, sm: 20, xs: 10 } }}>
           Enter any <span style={{ color: "#9146FF" }}>Twitch</span> clip URL to find when it was created.
         </Typography>
       </Box>
