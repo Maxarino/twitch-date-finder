@@ -1,5 +1,7 @@
 import os
 
+from datetime import datetime
+
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -8,9 +10,9 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from twitchAPI.twitch import Twitch
-
 from dotenv import load_dotenv
+
+from twitchAPI.twitch import Twitch
 
 # Initialise environment variables
 load_dotenv()
@@ -39,10 +41,11 @@ class GetClipDate(APIView):
                 'error': 'Invalid clip URL.'
             })
 
-        # Want to format the info being sent to the frontend
+        # Want to format the date and time being sent to the frontend
         created_at = clip_info["data"][0]["created_at"].split("T")
         date = created_at[0]
-        time = created_at[1][:-1]
+        time = datetime.strptime(created_at[1][:-1], "%H:%M:%S")
+        time = time.strftime("%I:%M:%S %p")
         
         return JsonResponse({
             'status_code': 200,
