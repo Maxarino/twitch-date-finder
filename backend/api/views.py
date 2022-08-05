@@ -31,18 +31,21 @@ class GetClipDate(APIView):
         app_secret = os.environ.get("TWITCH_APP_SECRET")
         twitch = Twitch(app_id, app_secret)
 
-        clip_info = twitch.get_clips(clip_id=clip_id)  # Returns a dict
+        clip_info = twitch.get_clips(clip_id=clip_id)
 
-        if clip_info["data"] == []:  # No clips with the id entered
+        if clip_info["data"] == []:  # No clip with the id entered exists
             return JsonResponse({
                 'status_code': 400,
                 'error': 'Invalid clip URL.'
             })
 
+        # Want to format the info being sent to the frontend
         created_at = clip_info["data"][0]["created_at"].split("T")
+        date = created_at[0]
+        time = created_at[1][:-1]
         
         return JsonResponse({
             'status_code': 200,
-            'date': created_at[0],
-            'time': created_at[1][:-1]
+            'date': date,
+            'time': time
         })
