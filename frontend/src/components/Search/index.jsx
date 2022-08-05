@@ -52,8 +52,8 @@ export default function Search() {
           </IconButton>
         </Paper>
       </Box>
-      <Box width="60%">
-        <Typography sx={{ marginTop: "-30vh", padding: "8%", color: "#9146FF", fontSize: { xl: 55, lg: 35, md: 30, sm: 20, xs: 10 } }}>
+      <Box width="64%">
+        <Typography sx={{ marginTop: "-20vh", color: "#9146FF", fontSize: { xl: 50, lg: 35, md: 32, sm: 22, xs: 10 } }}>
           {data}
         </Typography>
       </Box>
