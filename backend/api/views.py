@@ -1,0 +1,48 @@
+import os
+
+from django.shortcuts import render
+from django.http import JsonResponse
+
+from rest_framework.views import APIView
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from twitchAPI.twitch import Twitch
+
+from dotenv import load_dotenv
+
+# Initialise environment variables
+load_dotenv()
+
+class GetClipDate(APIView):
+    def get(self, request):
+        url = self.request.GET.get('q')
+
+        url = url.split("/")
+        if len(url) != 4:
+            return JsonResponse({
+                'status_code': 400,
+                'error': 'Invalid clip URL.'
+            })
+        clip_id = url[-1]
+
+        app_id = os.environ.get("TWITCH_APP_ID")
+        app_secret = os.environ.get("TWITCH_APP_SECRET")
+        twitch = Twitch(app_id, app_secret)
+
+        clip_info = twitch.get_clips(clip_id=clip_id)  # Returns a dict
+
+        if clip_info["data"] == []:  # No clips with the id entered
+            return JsonResponse({
+                'status_code': 400,
+                'error': 'Invalid clip URL.'
+            })
+
+        created_at = clip_info["data"][0]["created_at"].split("T")
+        
+        return JsonResponse({
+            'status_code': 200,
+            'date': created_at[0],
+            'time': created_at[1][:-1]
+        })
