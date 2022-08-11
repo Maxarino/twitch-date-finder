@@ -21,7 +21,7 @@ export default function Search() {
         if (response.data.status_code === 400) {
           setData(response.data.error);
         } else {  // Success
-          setData("Clip was created on " + response.data.date + " at " + response.data.time);
+          setData("Clip was created on " + response.data.date + " at " + response.data.time + ".");
         }
       }
     );
