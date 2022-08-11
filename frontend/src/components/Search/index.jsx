@@ -18,8 +18,6 @@ export default function Search() {
     event.preventDefault();
     searchRequest(query).then(
       response => {
-        console.log(response);
-
         if (response.data.status_code === 400) {
           setData(response.data.error);
         } else {  // Success
