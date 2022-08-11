@@ -26,12 +26,9 @@ class GetClipDate(APIView):
     def get(self, request):
         url = self.request.GET.get('q')
 
-        if "clip" not in url:
-            return CLIP_ERROR_RESPONSE
-
         clip_id = url[url.find("clip") + 5:]
 
-        if clip_id == '' or clip_id[0] == ' ':
+        if clip_id == '' or " " in clip_id:
             return CLIP_ERROR_RESPONSE
 
         app_id = os.environ.get("TWITCH_APP_ID")
