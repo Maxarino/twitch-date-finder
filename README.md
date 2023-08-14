@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Sometimes you watch a Twitch clip and wanna cross-reference it with a Youtube video / vod to understand the context. There's no way to get the date and time of a clip in the native Twitch app though, which I thought was weird & annoying so I made this.
+Sometimes you watch a Twitch clip and wanna cross-reference it with a Youtube video / vod to understand the context. There's no way to get the date and time of a clip in the native Twitch app though, which I thought was weird & annoying, so I made this.
 
 
 
